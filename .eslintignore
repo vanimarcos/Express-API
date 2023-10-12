@@ -1,0 +1,6 @@
+jest.config.js
+/*.js'
+node_modules
+dist
+covarage
+

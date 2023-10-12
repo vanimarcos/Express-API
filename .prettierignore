@@ -1,0 +1,9 @@
+.vscode
+.eslintrc.json
+/*.js'
+node_modules
+dist
+nodemon.json
+tsconfig.json
+package-lock.json
+package.json
