@@ -19,8 +19,5 @@ app.use(cors(corsOptions));
 
 app.use(hpp());
 app.use(ServerBusyness);
-// app.use(ResetXPoweredBy);
-// app.disable('x-powered-by');
-// app.use(Logs);
 app.use(routes);
 export default app;
