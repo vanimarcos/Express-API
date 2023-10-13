@@ -7,7 +7,7 @@ import cors from 'cors';
 import { corsOptions } from './cors';
 import routes from './routes';
 import app from './app';
-import { ServerBusyness } from './utils/middewares';
+import { Compression, ServerBusyness } from './utils/middewares';
 
 /** Bootstrap application */
 app.use(helmet());
@@ -19,5 +19,6 @@ app.use(cors(corsOptions));
 
 app.use(hpp());
 app.use(ServerBusyness);
+app.use(Compression);
 app.use(routes);
 export default app;
