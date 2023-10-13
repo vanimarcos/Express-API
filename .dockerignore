@@ -7,6 +7,7 @@ logs/
 ssl/
 dist
 .env
+dependency-check-report.html
 
 #Ignoring git and cache folders
 .git

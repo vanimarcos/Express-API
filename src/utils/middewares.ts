@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import toobusy from 'toobusy-js';
-const compression = require('compression');
-const ExpressBrute = require('express-brute');
+import compression from 'compression';
 import HTTP_STATUS_CODE from './httpsCodes';
 
 const ResetXPoweredBy = (req: Request, res: Response, next: NextFunction) => {
@@ -10,7 +9,7 @@ const ResetXPoweredBy = (req: Request, res: Response, next: NextFunction) => {
 };
 
 const Logs = (req: Request, res: Response, next: NextFunction) => {
-  console.log('Log');
+  // Write your log code here...
   next();
 };
 
@@ -33,7 +32,9 @@ const Compression = (req: Request, res: Response) => {
   return compression.filter(req, res);
 };
 
-const store = new ExpressBrute.MemoryStore(); // stores state locally, don't use this in production
-const BruteForce = new ExpressBrute(store);
+const RequestTimeout = (req: Request, res: Response, next: NextFunction) => {
+  if (!req.timedout) return next();
+  res.status(408).send('Request Timeout');
+};
 
-export { ResetXPoweredBy, Logs, ServerBusyness, Compression, BruteForce };
+export { ResetXPoweredBy, Logs, ServerBusyness, Compression };

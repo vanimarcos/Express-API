@@ -8,3 +8,4 @@ ssl/
 dist
 .env
 .cache
+dependency-check-report.html
