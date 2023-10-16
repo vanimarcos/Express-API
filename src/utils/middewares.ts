@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import toobusy from 'toobusy-js';
 import compression from 'compression';
-import HTTP_STATUS_CODE from './httpsCodes';
+import { HTTP_STATUS_CODE, HTTP_STATUS_MSG } from './httpsCodes';
 
 const ResetXPoweredBy = (req: Request, res: Response, next: NextFunction) => {
   res.setHeader('X-Powered-By', '');
@@ -16,7 +16,9 @@ const Logs = (req: Request, res: Response, next: NextFunction) => {
 /** The toobusy-js module allows you to monitor the event loop. */
 const ServerBusyness = (req: Request, res: Response, next: NextFunction) => {
   if (toobusy()) {
-    res.status(HTTP_STATUS_CODE.ServiceUnavailable).send('Server is Too Busy');
+    res
+      .status(HTTP_STATUS_CODE.ServiceUnavailable)
+      .send(HTTP_STATUS_MSG[HTTP_STATUS_CODE.ServiceUnavailable]);
   } else {
     next();
   }
@@ -38,7 +40,9 @@ const RequestTimeout = (
   next: NextFunction,
 ) => {
   if (!req.timedout) return next();
-  res.status(HTTP_STATUS_CODE.RequestTimeout).send('Request Timeout');
+  res
+    .status(HTTP_STATUS_CODE.RequestTimeout)
+    .send(HTTP_STATUS_MSG[HTTP_STATUS_CODE.RequestTimeout]);
 };
 
 export { ResetXPoweredBy, Logs, ServerBusyness, Compression, RequestTimeout };

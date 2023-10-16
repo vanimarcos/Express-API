@@ -5,7 +5,7 @@ const routes = Router();
 
 const BASE_ROUTE = '/';
 routes.get(BASE_ROUTE, (req: Request, res: Response) =>
-  res.send('Hello World'),
+  res.send('Hello from the API'),
 );
 
 routes.use(testRoutes);
