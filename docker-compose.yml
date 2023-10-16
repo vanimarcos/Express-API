@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: node-app
+    container_name: api_owasp_app
+    volumes:
+      - api_owasp_volume_files:/usr/src/app/storage
+      - api_owasp_volume_logs:/usr/src/app/logs
+    ports:
+      - 3000:3000
+    depends_on:
+     - api_owasp_db
+    networks:
+      - api_owasp_net
+
+  mysqldb:
+    image: mysql:8.0.21
+    container_name: api_owasp_db
+    env_file:
+      - ./.env
+    command:
+      - --secure-file-priv=NULL
+    ports:
+      - 3306:3306
+    volumes:
+      - api_owasp_volume_db:/var/lib/mysql
+    networks:
+      - owasp_net
+
+networks:
+  api_owasp_net:
+    driver: bridge
+
+volumes:
+  api_owasp_volume_db: {}
+  api_owasp_volume_files: {}
+  api_owasp_volume_logs: {}

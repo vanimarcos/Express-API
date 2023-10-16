@@ -9,6 +9,8 @@
     "start": "nodemon",
     "test": "jest --runInBand --detectOpenHandles",
     "tsc": "tsc",
+    "snyk:code":"snyk code test",
+    "":"",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix"

@@ -7,6 +7,8 @@ logs/
 ssl/
 dist
 .env
+.dccache
+.dcignore
 dependency-check-report.html
 
 #Ignoring git and cache folders
