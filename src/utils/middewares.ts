@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import toobusy from 'toobusy-js';
 import compression from 'compression';
 import HTTP_STATUS_CODE from './httpsCodes';
@@ -32,9 +32,13 @@ const Compression = (req: Request, res: Response) => {
   return compression.filter(req, res);
 };
 
-const RequestTimeout = (req: Request, res: Response, next: NextFunction) => {
+const RequestTimeout = (
+  req: Express.Request,
+  res: Response,
+  next: NextFunction,
+) => {
   if (!req.timedout) return next();
-  res.status(408).send('Request Timeout');
+  res.status(HTTP_STATUS_CODE.RequestTimeout).send('Request Timeout');
 };
 
-export { ResetXPoweredBy, Logs, ServerBusyness, Compression };
+export { ResetXPoweredBy, Logs, ServerBusyness, Compression, RequestTimeout };
