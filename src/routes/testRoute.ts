@@ -12,7 +12,7 @@ const testRoutes = Router();
 const TEST_ROUTE = '/test';
 
 testRoutes.get(TEST_ROUTE, TestLimiter, (req, res) => {
-  res.json('Hello From Test Route');
+  res.json(`Hello from ${TEST_ROUTE} route`);
 });
 // testRoutes.get(
 //   `${TEST_ROUTE}/:id`,

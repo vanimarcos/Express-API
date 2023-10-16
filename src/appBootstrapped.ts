@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import helmet from 'helmet';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const timeout = require('connect-timeout');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const hpp = require('hpp');
