@@ -28,5 +28,5 @@ RUN npm install
 # RUN npm ci --omit=dev
 
 EXPOSE 3000
-COPY --from=builder /usr/src/app/dist ./
-CMD [ "node", "server.js" ]
+COPY --from=builder /usr/src/app/dist ./dist
+CMD [ "node", "dist/server.js" ]
