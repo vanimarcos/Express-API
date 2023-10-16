@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import testRoutes from './testRoute';
 import { HTTP_STATUS_CODE } from '../utils/httpsCodes';
+import testRoutePuppeter from './testRoutePuppeter';
 
 const routes = Router();
 
@@ -10,6 +11,7 @@ routes.get(BASE_ROUTE, (req: Request, res: Response) =>
 );
 
 routes.use(testRoutes);
+routes.use(testRoutePuppeter);
 
 export default routes;
 export { BASE_ROUTE };

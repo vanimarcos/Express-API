@@ -18,7 +18,7 @@ const ServerBusyness = (req: Request, res: Response, next: NextFunction) => {
   if (toobusy()) {
     res
       .status(HTTP_STATUS_CODE.ServiceUnavailable)
-      .send(HTTP_STATUS_MSG[HTTP_STATUS_CODE.ServiceUnavailable]);
+      .json({ message: HTTP_STATUS_MSG[HTTP_STATUS_CODE.ServiceUnavailable] });
   } else {
     next();
   }
@@ -42,7 +42,7 @@ const RequestTimeout = (
   if (!req.timedout) return next();
   res
     .status(HTTP_STATUS_CODE.RequestTimeout)
-    .send(HTTP_STATUS_MSG[HTTP_STATUS_CODE.RequestTimeout]);
+    .json({ message: HTTP_STATUS_MSG[HTTP_STATUS_CODE.RequestTimeout] });
 };
 
 export { ResetXPoweredBy, Logs, ServerBusyness, Compression, RequestTimeout };

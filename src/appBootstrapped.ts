@@ -13,6 +13,7 @@ import { RequestTimeout, ServerBusyness } from './utils/middewares';
 
 /** Bootstrap application */
 app.use(helmet());
+app.use(RequestTimeout);
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
@@ -20,11 +21,10 @@ app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 app.use(cors(corsOptions));
 
 app.use(hpp());
-app.use(ServerBusyness);
+// app.use(ServerBusyness);
 
 /** Define a request timeout for all routes */
 app.use(timeout('15s')); // Set it to 15 seconds
 
-app.use(RequestTimeout);
 app.use(routes);
 export default app;
