@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import toobusy from 'toobusy-js';
 import compression from 'compression';
 import { HTTP_STATUS_CODE, HTTP_STATUS_MSG } from './httpsCodes';
