@@ -23,13 +23,19 @@ services:
     env_file:
       - ./.env
     command:
+      - --ssl-ca=/etc/mysql/ssl/ca.pem 
+      - --ssl-cert=/etc/mysql/ssl/server-cert.pem 
+      - --ssl-key=/etc/mysql/ssl/server-key.pem
       - --secure-file-priv=NULL
     ports:
       - 3306:3306
     volumes:
       - api_owasp_volume_db:/var/lib/mysql
+      - ./mysql/my.cnf/etc/mysql/my.cnf
+      - ./ssl/mysql/:/etc/mysql/ssl/
     networks:
       - owasp_net
+    restart: always
 
 networks:
   api_owasp_net:

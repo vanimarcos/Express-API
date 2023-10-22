@@ -18,6 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.4.2",
     "bottleneck": "^2.19.5",
     "compression": "^1.7.4",
     "connect-timeout": "^1.9.0",
@@ -29,6 +30,8 @@
     "helmet": "^7.0.0",
     "hpp": "^0.2.3",
     "moment-timezone": "^0.5.43",
+    "mysql2": "^3.6.2",
+    "prisma": "^5.4.2",
     "puppeteer": "^21.3.8",
     "raw-body": "^2.5.2",
     "reflect-metadata": "^0.1.13",
