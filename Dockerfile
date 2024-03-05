@@ -1,4 +1,4 @@
-FROM node:18.12.1 as builder
+FROM node:18.19-alphine3.19 as builder
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -13,7 +13,7 @@ COPY . .
 RUN npm run tsc
 
 
-FROM node:18.12.1
+FROM node:18.19-alphine3.19
 
 # create app directory
 WORKDIR /usr/src/app
@@ -30,6 +30,10 @@ EXPOSE 3000
 # copy dist files to dist forlder in the execution file 
 COPY --chown=node --from=builder /usr/src/app/dist ./dist
 
-# create a user to run the container 
+# Define a health check
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD curl -fs http://localhost:3000/health || exit 1
+
+# Create a user to run the container 
 USER node
 CMD [ "node", "dist/server.js" ]
