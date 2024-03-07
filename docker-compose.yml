@@ -10,31 +10,34 @@ services:
     volumes:
       - api_owasp_volume_files:/usr/src/app/storage
       - api_owasp_volume_logs:/usr/src/app/logs
+      - ./ssl/server:/usr/src/app/ssl/server
     ports:
       - 3000:3000
     depends_on:
-     - api_owasp_db
+     - mysqldb
     networks:
       - api_owasp_net
 
   mysqldb:
-    image: mysql:8.0.21
-    container_name: api_owasp_db
+    image: mysql:8.3.0
+    container_name: mysqldb
     env_file:
       - ./.env
-    command:
-      - --ssl-ca=/etc/mysql/ssl/ca.pem 
-      - --ssl-cert=/etc/mysql/ssl/server-cert.pem 
-      - --ssl-key=/etc/mysql/ssl/server-key.pem
-      - --secure-file-priv=NULL
+
+    # command:
+      # - --ssl-ca=/etc/mysql/ssl/ca-cert.pem
+      # - --ssl-cert=/etc/mysql/ssl/server-cert.pem
+      # - --ssl-key=/etc/mysql/ssl/server-key.pem
+      # - --secure-file-priv=NULL
     ports:
       - 3306:3306
     volumes:
       - api_owasp_volume_db:/var/lib/mysql
-      - ./mysql/my.cnf/etc/mysql/my.cnf
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
       - ./ssl/mysql/:/etc/mysql/ssl/
+      - ./mysql/logs:/var/log/mysql
     networks:
-      - owasp_net
+      - api_owasp_net
     restart: always
 
 networks:

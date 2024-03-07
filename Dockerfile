@@ -1,4 +1,4 @@
-FROM node:18.19-alphine3.19 as builder
+FROM node:18-alpine3.18 as builder
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -10,10 +10,11 @@ RUN npm install
 
 COPY . .
 
-RUN npm run tsc
+RUN npm run build
 
 
-FROM node:18.19-alphine3.19
+FROM node:18-alpine3.18
+
 
 # create app directory
 WORKDIR /usr/src/app
