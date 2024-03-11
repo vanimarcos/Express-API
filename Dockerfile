@@ -32,8 +32,8 @@ EXPOSE 3000
 COPY --chown=node --from=builder /usr/src/app/dist ./dist
 
 # Define a health check
-HEALTHCHECK --interval=30s --timeout=3s \
-  CMD curl -fs http://localhost:3000/health || exit 1
+# HEALTHCHECK --interval=30s --timeout=3s \
+#   CMD curl -fs http://localhost:3000/health || exit 1
 
 # Create a user to run the container 
 USER node
