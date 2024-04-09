@@ -9,7 +9,7 @@ import cors from 'cors';
 import { corsOptions } from './cors';
 import routes from './routes';
 import app from './app';
-import { RequestTimeout, ServerBusyness } from './utils/middewares';
+import { RequestTimeout } from './utils/middewares';
 
 /** Bootstrap application */
 app.use(helmet());
