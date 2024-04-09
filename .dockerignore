@@ -13,4 +13,6 @@ dependency-check-report.html
 
 #Ignoring git and cache folders
 .git
-.cache
+.cache.DS_Store
+.scannerwork
+.scannerwork/.sonar_lock
