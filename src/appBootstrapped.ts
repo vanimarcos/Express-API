@@ -21,7 +21,6 @@ app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 app.use(cors(corsOptions));
 
 app.use(hpp());
-// app.use(ServerBusyness);
 
 /** Define a request timeout for all routes */
 app.use(timeout('15s')); // Set it to 15 seconds
