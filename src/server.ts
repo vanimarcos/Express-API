@@ -1,23 +1,14 @@
 import 'reflect-metadata';
-import http, { Server } from 'http';
+import { Server } from 'http';
 import https from 'https';
 import app from './appBootstrapped';
 import port from './port';
 import certs from './utils/certs';
-import { PRODUCTION } from './envNames';
 import logger from './utils/logger';
 import { loggerDesc } from './utils/loggerDesc';
 import terminate from './terminate';
 
-
-// const httpServer: Server =
-//   process.env.NODE_ENV === PRODUCTION
-//     ? https.createServer(certs, app)
-//     : http.createServer(app);
-
-
-const httpServer: Server = https.createServer(certs, app)
-
+const httpServer: Server = https.createServer(certs, app);
 
 httpServer.listen(port, () => {
   logger.info({
