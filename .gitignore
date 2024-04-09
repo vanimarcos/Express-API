@@ -11,3 +11,5 @@ dist
 .dccache
 .dcignore
 dependency-check-report.html
+.DS_Store
+.scannerwork/.sonar_lock
