@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'node:latest'
+            image 'node:18-alpine3.18'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
